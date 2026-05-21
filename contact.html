@@ -1,0 +1,797 @@
+<!doctype html>
+<html >
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Slot - ParkChennai</title>
+
+  <!-- boostarp -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <!-- font awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- font style -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+   <!-- Link Css -->
+  <link rel="stylesheet"  type="text/css"  href="./style.css" />
+</head>
+<style>
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange1);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text);
+  }
+
+  .divider-line {
+    width: 48px;
+    height: 3px;
+    background: var(--orange1);
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  /* PAGE home */
+  .page-home {
+    background: var(--dark2);
+    border-bottom: 1px solid var(--border);
+    padding: 5rem 0 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+
+
+  /* CONTACT CARDS */
+  .contact-info-card {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.9rem;
+    transition: all 0.35s;
+    transition: all 0.4s ease;
+    max-height: 200px;
+  }
+
+
+  .contact-info-card:hover {
+    border-color: rgba(255, 107, 43, 0.3);
+    box-shadow: 0 16px 50px rgba(240, 141, 141, 0.25);
+  }
+
+  .contact-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(255, 107, 43, 0.1);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--orange1);
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+  }
+
+  .contact-info-card:hover .contact-icon {
+    background: var(--orange1);
+    color: #fff;
+  }
+
+  .contact-info-card h6 {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.4rem;
+  }
+
+  .contact-info-card p {
+    color: var(--text);
+    font-size: 0.95rem;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .contact-info-card small {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  /* FORM */
+  .form-card {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 2.5rem;
+  }
+
+  .form-label-custom {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    
+  }
+
+  .form-control-custom {
+   background-color: var(--dark4);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    padding: 0.85rem 1.1rem;
+    font-size: 0.92rem;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.25s;
+    font-family: "DM Sans", sans-serif;
+  }
+
+  .form-control-custom:focus {
+    border-color: rgba(255, 107, 43, 0.4);
+  }
+
+  .form-control-custom::placeholder {
+    color: var(--muted);
+  }
+
+  .form-control-custom option {
+    background: var(--dark3);
+  }
+
+  textarea.form-control-custom {
+    resize: vertical;
+    min-height: 130px;
+  }
+
+  .btn-submit {
+    background: var(--orange1);
+    border: none;
+    color: #fff;
+    border-radius: 14px;
+    padding: 1rem 2.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s;
+    font-family: "Syne", sans-serif;
+    box-shadow: 0 0 25px rgba(255, 107, 43, 0.25);
+  }
+
+  .btn-submit:hover {
+    background: var(--orange1-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(255, 107, 43, 0.35);
+  }
+
+  /* MAP */
+  .map-card {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    height: 320px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .map-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("https://images.unsplash.com/photo-1524661135-423995f22d0b?w=700") center/cover no-repeat;
+    opacity: 0.07;
+  }
+
+  .map-card i {
+    font-size: 3rem;
+    color: var(--orange1);
+    position: relative;
+  }
+
+  .map-card p {
+    color: var(--muted);
+    font-size: 0.88rem;
+    position: relative;
+    text-align: center;
+    margin: 0;
+  }
+
+  .map-pin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 2;
+  }
+
+  .map-pin-dot {
+    width: 24px;
+    height: 24px;
+    background: var(--orange1);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 0 20px rgba(255, 107, 43, 0.5);
+  }
+
+  .map-pin-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  
+    width: 48px;
+    height: 48px;
+    border: 2px solid rgba(255, 107, 43, 0.3);
+    border-radius: 50%;
+    animation: pulse-ring 2s infinite;
+  }
+
+
+  @keyframes pulse-ring {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translate(-50%, -50%) scale(4);
+      opacity: 0;
+    }
+  }
+
+  .accordion-item {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+  }
+
+  .accordion-button {
+    background: transparent;
+    color: var(--text);
+  }
+ 
+  .accordion-button:not(.collapsed) {
+    background: transparent;
+    color: var(--orange1);
+    box-shadow: none;
+  } 
+
+  .accordion-body {
+    color: var(--muted);
+  }
+
+  /* .accordion-button::after {
+    filter: invert(1);
+  } */
+
+
+
+  /* SOCIAL */
+  .social-big {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.8rem 1rem;
+    text-decoration: none;
+    transition: all 0.35s;
+  }
+
+  .social-big i {
+    font-size: 1.8rem;
+    color: var(--muted);
+    transition: color 0.25s;
+  }
+
+  .social-big span {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .social-big:hover {
+    border-color: rgba(255, 107, 43, 0.3);
+    transform: translateY(-5px);
+  }
+
+  .social-big:hover i,
+  .social-big:hover span {
+    color: var(--orange1);
+  }
+  
+</style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark ">
+    <div class="container">
+      <a class="navbar-brand" href="./index.html">Park<span>Chennai</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./find-parking.html">Find Parking</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./booking.html">Book</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="./contact.html">Contact</a>
+          </li>
+          <li class="nav-item ms-2">
+            <a class="nav-link nav-find" href="./find-parking.html"><i class="fa fa-car me-1"></i> Find Parking</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- home -->
+  <div class="page-home">
+    <div class="container position-relative" style="z-index: 1">
+      <div class="row align-items-end">
+        <div class="col-lg-7 fade-up">
+          <div class="section-label">Get in Touch</div>
+          <div class="divider-line"></div>
+          <h1>
+            We're Right Here<br /><span style="color: var(--orange1)">in Chennai</span>
+          </h1>
+          <p style="
+                color: var(--muted);
+                margin-top: 1rem;
+                max-width: 480px;
+                line-height: 1.8;
+              ">
+            Questions, partnership requests, or just want to wave hello — our
+            team is available and responsive.
+          </p>
+        </div>
+        <div class="col-lg-4 offset-lg-1 text-lg-end fade-up d2">
+          <div style="color: var(--muted); font-size: 0.88rem">
+            Average response time
+          </div>
+          <div style="
+                font-size: 1.6rem;
+                font-weight: 800;
+                color: var(--orange1);
+                font-family:Syne, sans-serif;
+              ">
+            Under 2 hours
+          </div>
+          <div style="font-size: 0.78rem; color: var(--muted)">
+            Mon-Sat, 9 AM - 8 PM IST
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT INFO -->
+  <section style="padding: 4rem 0 2rem">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-sm-6 col-lg-3">
+          <div class="contact-info-card fade-up">
+            <div class="contact-icon"><i class="fa fa-location-dot"></i></div>
+            <h6>Our Office</h6>
+            <p>12, Anna Salai, Nandanam<br />Chennai - 600002</p>
+            <small>Near Nandanam MRTS</small>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="contact-info-card fade-up d1">
+            <div class="contact-icon"><i class="fa fa-phone"></i></div>
+            <h6>Phone Support</h6>
+            <p>+91 98400 12345</p>
+            <small>Mon-Sat · 9 AM - 8 PM IST</small>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="contact-info-card fade-up d2">
+            <div class="contact-icon"><i class="fa fa-envelope"></i></div>
+            <h6>Email Us</h6>
+            <p>hello@parkchennai.in</p>
+            <small>Response within 2 hours</small>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="contact-info-card fade-up d3">
+            <div class="contact-icon"><i class="fa fa-headset"></i></div>
+            <h6>Emergency Parking</h6>
+            <p>+91 98400 99999</p>
+            <small>24/7 Helpline</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM MAP -->
+  <section style="padding: 2rem 0 5rem">
+    <div class="container">
+      <div class="row g-5 align-items-start">
+        <!-- FORM -->
+        <div class="col-lg-7 fade-up">
+          <div class="form-card">
+            <h3 class="mb-1" style="font-weight: 800">Send us a Message</h3>
+            <p style="
+                  color: var(--muted);
+                  font-size: 0.9rem;
+                  margin-bottom: 2rem;
+                ">
+              Fill in the form and we'll get back to you faster than you can
+              find parking in T. Nagar on a Sunday.
+            </p>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label class="form-label-custom">Your Name</label>
+                <input type="text" class="form-control-custom" placeholder="Karthik Subramaniam" />
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label-custom">Phone Number</label>
+                <input type="tel" class="form-control-custom" placeholder="+91 98400 XXXXX" />
+              </div>
+              <div class="col-12">
+                <label class="form-label-custom">Email Address</label>
+                <input type="email" class="form-control-custom" placeholder="you@example.com" />
+              </div>
+              <div class="col-12">
+                <label class="form-label-custom">Subject</label>
+                <select class="form-control-custom">
+                  <option>General Enquiry</option>
+                  <option>Booking Support</option>
+                  <option>Partner / List Your Parking</option>
+                  <option>Technical Issue</option>
+                  <option>Billing / Payment</option>
+                  <option>Media / Press</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label-custom">Message</label>
+                <textarea class="form-control-custom"
+                  placeholder="Tell us how we can help — the more detail the better…"></textarea>
+              </div>
+              <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
+                <button class="btn-submit">
+                  <i class="fa fa-paper-plane me-2"></i>Send Message
+                </button>
+                <span style="font-size: 0.78rem; color: var(--muted)">We'll respond within 2 hours on business
+                  days.</span>
+              </div>
+              <div class="col-12">
+                <div class="toast-custom" id="successToast">
+                 
+                  <p>  <i class="fa fa-circle-check"></i> Message sent! We'll get back to you within 2 hours.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MAP EXTRA INFO -->
+        <div class="col-lg-5">
+          <div class="map-card mb-4 fade-up d1">
+            <div class="map-pin">
+              <div style="position: relative">
+                <div class="map-pin-ring"></div>
+                <div class="map-pin-dot"></div>
+              </div>
+            </div>
+            <i class="fa fa-map-location-dot" style="margin-top: 3rem"></i>
+            <p>
+              12, Anna Salai, Nandanam<br />Chennai - 600002<br /><small style="color: var(--orange1)">ParkChennai
+                HQ</small>
+            </p>
+          </div>
+
+          <div class="form-card fade-up d2">
+            <h5 class="mb-3">List Your Parking Space</h5>
+            <p style="
+                  color: var(--muted);
+                  font-size: 0.88rem;
+                  line-height: 1.7;
+                  margin-bottom: 1.2rem;
+                ">
+              Have a parking lot in Chennai? Partner with us and earn
+              consistently. We handle bookings, payments, and customer
+              support.
+            </p>
+            <div style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0.6rem;
+                  margin-bottom: 1.2rem;
+                ">
+              <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.6rem;
+                    font-size: 0.85rem;
+                  ">
+                <i class="fa fa-check-circle" style="color: var(--orange1)"></i><span style="color: var(--text)">Zero
+                  setup cost</span>
+              </div>
+              <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.6rem;
+                    font-size: 0.85rem;
+                  ">
+                <i class="fa fa-check-circle" style="color: var(--orange1)"></i><span style="color: var(--text)">Weekly
+                  payouts directly to your bank</span>
+              </div>
+              <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.6rem;
+                    font-size: 0.85rem;
+                  ">
+                <i class="fa fa-check-circle" style="color: var(--orange1)"></i><span
+                  style="color: var(--text)">Dedicated partner support</span>
+              </div>
+              <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.6rem;
+                    font-size: 0.85rem;
+                  ">
+                <i class="fa fa-check-circle" style="color: var(--orange1)"></i><span
+                  style="color: var(--text)">Real-time earnings dashboard</span>
+              </div>
+            </div>
+            <a href="./contact.html" class="btn-submit d-inline-block" style="
+                  font-size: 0.9rem;
+                  padding: 0.8rem 1.6rem;
+                  text-decoration: none;
+                "><i class="fa fa-handshake me-2"></i>Become a Partner</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="background: var(--dark2); padding: 5rem 0">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <div class="section-label">FAQ</div>
+          <div class="divider-line"></div>
+          <h2 class="section-title">Frequently Asked</h2>
+          <p style="
+                color: var(--muted);
+                margin-top: 1rem;
+                line-height: 1.8;
+                font-size: 0.92rem;
+              ">
+            Can't find what you're looking for? Reach out via the form above
+            and we'll get back to you quickly.
+          </p>
+        </div>
+
+
+        <div class="col-lg-7 offset-lg-1">
+          <div class="accordion" id="faqAccordion">
+
+            <!-- 1 -->
+            <div class="accordion-item ">
+              <h2 class="accordion-header ">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  How do I book a parking slot?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Search your area on the Find Parking page, choose a slot that fits your time and budget,
+                  fill in your vehicle details, and confirm. You'll receive a QR pass instantly on your phone.
+                </div>
+              </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq2">
+                  Can I cancel or modify a booking?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes! You can cancel your booking up to 30 minutes before the start time for a full refund.
+                  Modifications can be made up to 1 hour before.
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq3">
+                  Is my vehicle safe at listed parking lots?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  All parking locations on ParkChennai are verified by our operations team.
+                  They must meet safety standards like CCTV, attendants, and lighting.
+                </div>
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq4">
+                  What payment methods are accepted?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We accept UPI (GPay, PhonePe, Paytm), cards, net banking, and wallets.
+                  All transactions are secure.
+                </div>
+              </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq5">
+                  Do you have parking near Chennai Airport?
+                </button>
+              </h2>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes! We have verified parking lots near Chennai Airport in Tirusulam and Pallavaram.
+                </div>
+              </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faq6">
+                  How do I report an issue with a parking spot?
+                </button>
+              </h2>
+              <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Call our 24/7 helpline or email support. We'll respond quickly and resolve it.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section style="padding: 4rem 0">
+    <div class="container">
+      <div class="text-center mb-4">
+        <div class="section-label">Follow Us</div>
+        <div class="divider-line mx-auto"></div>
+        <h2 class="section-title">Stay Connected</h2>
+      </div>
+      <div class="row g-3 justify-content-center">
+        <div class="col-6 col-sm-3 col-md-2">
+          <a href="#" class="social-big"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+        </div>
+        <div class="col-6 col-sm-3 col-md-2">
+          <a href="#" class="social-big"><i class="fab fa-twitter"></i><span>Twitter / X</span></a>
+        </div>
+        <div class="col-6 col-sm-3 col-md-2">
+          <a href="#" class="social-big"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+        </div>
+        <div class="col-6 col-sm-3 col-md-2">
+          <a href="#" class="social-big"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+        </div>
+        <div class="col-6 col-sm-3 col-md-2">
+          <a href="#" class="social-big"><i class="fab fa-youtube"></i><span>YouTube</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-brand mb-2">Park<span>Chennai</span></div>
+          <p class="footer-desc">
+            Chennai's smartest parking solution. Real-time slots, easy
+            booking, city-wide coverage.
+          </p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <div class="footer-title">Pages</div>
+          <ul class="footer-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./find-parking.html">Find Parking</a></li>
+            <li><a href="./booking.html">Book a Slot</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-title">Hot Locations</div>
+          <ul class="footer-links">
+            <li><a href="#">T. Nagar Parking</a></li>
+            <li><a href="#">Marina Beach Parking</a></li>
+            <li><a href="#">Velachery Parking</a></li>
+            <li><a href="#">Anna Nagar Parking</a></li>
+            <li><a href="#">Guindy IT Park Parking</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-title">Contact Us</div>
+          <ul class="footer-links">
+            <li>
+              <i class="fa fa-location-dot me-2" style="color: var(--orange1)"></i>
+              Anna Salai, Chennai - 600002
+            </li>
+            <li class="mt-2">
+              <i class="fa fa-phone me-2" style="color: var(--orange1)"></i>
+              +91 98400 12345
+            </li>
+            <li class="mt-2">
+              <i class="fa fa-envelope me-2" style="color: var(--orange1)"></i>
+              hello@parkchennai.in
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom d-flex flex-wrap justify-content-between">
+        <span>© 2025 ParkChennai. All rights reserved.</span>
+        <span>Made with
+          <i class="fa fa-heart" style="color: var(--orange1)"></i> in
+          Chennai</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

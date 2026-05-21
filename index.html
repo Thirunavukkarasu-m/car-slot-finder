@@ -1,0 +1,635 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ParkChennai Find Parking in Chennai</title>
+    <!-- boostarp -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- font awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- font style -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- -------------Link css ------------>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="./index.html">Park<span>Chennai</span></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+            <li class="nav-item">
+              <a class="nav-link active" href="./index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./find-parking.html">Find Parking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./booking.html">Book</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./contact.html">Contact</a>
+            </li>
+            <li class="nav-item ms-2">
+              <a class="nav-link nav-find" href="./find-parking.html"
+                ><i class="fa fa-car me-1"></i> Find Parking</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- home -->
+    <section class="home position-relative">
+      <div class="home-bg"></div>
+      <div class="home-overlay"></div>
+      <div class="container position-relative">
+        <div class="row align-items-center gy-5">
+          <div class="col-lg-6">
+            <div class="home-badge fade-up">
+              <i class="fa fa-location-dot"></i> Chennai's #1 Parking Platform
+            </div>
+            <h1 class="fade-up d1">
+              Find Parking<br /><span>Instantly</span> in Chennai
+            </h1>
+            <p class="fade-up d2">
+              No more circling busy streets in T. Nagar or Marina. Book your
+              spot in seconds — real-time availability across 200+ locations in
+              Chennai.
+            </p>
+            <div class="d-flex gap-3 flex-wrap fade-up d3">
+              <a href="./" class="btn btn-primary-custom"
+                ><i class="fa fa-magnifying-glass me-2"></i>Find Parking Now</a
+              >
+              <a href="" class="btn btn-outline-custom">How It Works</a>
+            </div>
+            <div class="home-search-bar fade-up d4">
+              <i class="fa fa-location-dot" style="color: var(--orange1)"></i>
+              <input
+                type="text"
+                placeholder="Search by area — T. Nagar, Velachery, Anna Nagar…"
+              />
+              <button>Search</button>
+            </div>
+            <div class="d-flex gap-4 mt-4 fade-up d4">
+              <div class="home-stat">
+                <div class="val">200+</div>
+                <div class="lbl">Parking Spots</div>
+              </div>
+              <div class="home-stat">
+                <div class="val">50K+</div>
+                <div class="lbl">Bookings Done</div>
+              </div>
+              <div class="home-stat">
+                <div class="val">4.8★</div>
+                <div class="lbl">User Rating</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 offset-lg-1">
+            <div class="home-img-card fade-up d2">
+              <img
+                src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=800"
+                alt="Chennai parking"
+              />
+              <div
+                class="p-3 d-flex justify-content-between align-items-center"
+                style="background: var(--dark4)"
+              >
+                <div>
+                  <div style="font-size: 0.78rem; color: var(--muted)">
+                    Available Now
+                  </div>
+                  <div style="font-weight: 700; color: var(--white)">
+                    Marina Mall Parking
+                  </div>
+                </div>
+                <div
+                  style="
+                    background: rgba(34, 197, 94, 0.1);
+                    color: #22c55e;
+                    padding: 0.3rem 0.8rem;
+                    border-radius: 50px;
+                    font-size: 0.78rem;
+                    font-weight: 700;
+                  "
+                >
+                  ● 12 slots free
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-5">
+            <div class="section-label">Why ParkChennai</div>
+            <div class="divider-line"></div>
+            <h2 class="section-title">Smarter Parking,<br />Zero Stress</h2>
+          </div>
+          <div class="col-lg-6 offset-lg-1 d-flex align-items-end">
+            <p class="section-sub">
+              From Mylapore to Porur, from Guindy to Adyar — we've got every
+              corner of Chennai covered with live parking data.
+            </p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fa fa-bolt"></i></div>
+              <h5>Real-Time Availability</h5>
+              <p>
+                Live slot updates every 30 seconds. Know before you go — whether
+                it's full at T. Nagar or 10 spots free near Express Avenue.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fa fa-calendar-check"></i>
+              </div>
+              <h5>Advance Booking</h5>
+              <p>
+                Reserve your spot hours or days in advance. Perfect for airport
+                trips, mall visits, or big events at YMCA grounds.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="fa fa-route"></i></div>
+              <h5>GPS Navigation</h5>
+              <p>
+                One tap and your maps app opens with turn-by-turn directions to
+                your booked spot — no more guessing lanes.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fa fa-shield-halved"></i>
+              </div>
+              <h5>Safe & Secured</h5>
+              <p>
+                All listed parking lots are verified, CCTV-monitored, and
+                staffed. Park with confidence anytime.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fa fa-indian-rupee-sign"></i>
+              </div>
+              <h5>Transparent Pricing</h5>
+              <p>
+                No hidden fees. From ₹20/hr in residential areas to ₹80/hr
+                premium basement parking — always clear upfront.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fa fa-mobile-screen"></i>
+              </div>
+              <h5>Digital Pass</h5>
+              <p>
+                Show your QR pass on phone — no printed tickets, no waiting.
+                Entry and exit tracked automatically.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VEHICLE TYPES -->
+    <section class="vehicle-sec">
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="section-label">Vehicle Categories</div>
+          <div class="divider-line mx-auto"></div>
+          <h2 class="section-title">Parking for Every Vehicle</h2>
+        </div>
+        <div class="row g-4 justify-content-center">
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="vehicle-card">
+              <div class="v-icon"><i class="fa fa-car"></i></div>
+              <h5>Car Parking</h5>
+              <small>Sedans, SUVs, Hatchbacks</small>
+              <div><span class="vehicle-btn">From ₹30/hr</span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="vehicle-card">
+              <div class="v-icon"><i class="fa fa-motorcycle"></i></div>
+              <h5>Bike Parking</h5>
+              <small>Scooters, Motorcycles, Bikes</small>
+              <div><span class="vehicle-btn">From ₹10/hr</span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="vehicle-card">
+              <div class="v-icon"><i class="fa fa-charging-station"></i></div>
+              <h5>EV Charging</h5>
+              <small>Electric Vehicles</small>
+              <div><span class="vehicle-btn">Charging + Parking</span></div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="vehicle-card">
+              <div class="v-icon"><i class="fa fa-truck"></i></div>
+              <h5>Heavy Vehicles</h5>
+              <small>Vans, Trucks, Autos</small>
+              <div><span class="vehicle-btn">From ₹60/hr</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHENNAI LOCATIONS -->
+    <section>
+      <div class="container">
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-6">
+            <div class="section-label">Coverage Areas</div>
+            <div class="divider-line"></div>
+            <h2 class="section-title">All Across Chennai</h2>
+            <p class="section-sub mt-3">
+              From the busiest bazaars to calm residential streets — we're
+              parked all over the city.
+            </p>
+          </div>
+        </div>
+        <div>
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> T. Nagar</span
+          >
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Marina Beach</span
+          >
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Velachery</span
+          >
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Anna Nagar</span
+          >
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Mylapore</span
+          >
+          <span class="loc-chip"><i class="fa fa-location-dot"></i> Adyar</span>
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Guindy</span
+          >
+          <span class="loc-chip"><i class="fa fa-location-dot"></i> Porur</span>
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Tambaram</span
+          >
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Egmore</span
+          >
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Kodambakkam</span
+          >
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Nungambakkam</span
+          >
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Sholinganallur</span
+          >
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Perungudi</span
+          >
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Koyambedu</span
+          >
+          <span class="loc-chip"
+            ><i class="fa fa-location-dot"></i> Chromepet</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section style="padding-top: 0">
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="section-label">Our Facilities</div>
+          <div class="divider-line mx-auto"></div>
+          <h2 class="section-title">Parking Across the City</h2>
+        </div>
+        <div class="gallery-wrap">
+          <div class="g-item large">
+            <img
+              src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=600"
+              alt="parking lot"
+            />
+          </div>
+          <div class="g-item">
+            <img
+              src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=600"
+              alt="cars parked"
+            />
+          </div>
+          <div class="g-item">
+            <img
+              src="https://thumbs.dreamstime.com/b/multi-level-parking-system-manhattan-22913214.jpg"
+              alt="multilevel parking"
+            />
+          </div>
+          <div class="g-item">
+            <img
+              src="https://images.unsplash.com/photo-1559570278-eb8d71d06403?w=600"
+              alt="street parking"
+            />
+          </div>
+          <div class="g-item grow">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiVtd6rmZHLXKIkVB7j_0AWCQTHS3FBfL3sw&s"
+              alt="underground parking"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-sec">
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="section-label">Simple Process</div>
+          <div class="divider-line mx-auto"></div>
+          <h2 class="section-title">How It Works</h2>
+        </div>
+        <div class="row align-items-start justify-content-center">
+          <div class="col-12 col-md-3">
+            <div class="step-card">
+              <div class="step-num">1</div>
+              <h5>Search Location</h5>
+              <p>
+                Enter your destination or area in Chennai. See all nearby
+                available parking spots instantly.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-1 d-none d-md-flex step-arrow">
+            <i class="fa fa-arrow-right"></i>
+          </div>
+          <div class="col-12 col-md-3">
+            <div class="step-card">
+              <div class="step-num">2</div>
+              <h5>Select & Book</h5>
+              <p>
+                Pick a slot that fits your time and budget. Confirm your booking
+                in under 30 seconds.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-1 d-none d-md-flex step-arrow">
+            <i class="fa fa-arrow-right"></i>
+          </div>
+          <div class="col-12 col-md-3">
+            <div class="step-card">
+              <div class="step-num">3</div>
+              <h5>Park & Go</h5>
+              <p>
+                Navigate to your spot, scan your QR pass at the gate, and park
+                stress-free!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section>
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="section-label">Testimonials</div>
+          <div class="divider-line mx-auto"></div>
+          <h2 class="section-title">Chennai Loves Parking Easy</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="testi-card">
+              <div class="stars">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i
+                ><i class="fa fa-star"></i><i class="fa fa-star"></i
+                ><i class="fa fa-star"></i>
+              </div>
+              <div class="quote">"</div>
+              <p>
+                Shopping in T. Nagar was always a nightmare for parking. Since
+                ParkChennai, I book a spot before I even leave home. Absolute
+                lifesaver during Diwali season!
+              </p>
+              <div class="d-flex align-items-center gap-2 mt-3">
+                <img
+                  src="https://i.pravatar.cc/80?img=12"
+                  class="testi-avatar"
+                  alt=""
+                />
+                <div>
+                  <div class="testi-name">Kavitha Rajan</div>
+                  <div class="testi-role">T. Nagar Resident</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="testi-card h-100">
+              <div class="stars">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i
+                ><i class="fa fa-star"></i><i class="fa fa-star"></i
+                ><i class="fa fa-star"></i>
+              </div>
+              <div class="quote">"</div>
+              <p>
+                I work in Guindy IT Park and the EV charging + parking combo is
+                just brilliant. My car's charged and parked — what more do I
+                need? Highly recommend!
+              </p>
+              <div class="d-flex align-items-center gap-2 mt-3">
+                <img
+                  src="https://i.pravatar.cc/80?img=33"
+                  class="testi-avatar"
+                  alt=""
+                />
+                <div>
+                  <div class="testi-name">Arjun Krishnamurthy</div>
+                  <div class="testi-role">Software Engineer, Guindy</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="testi-card h-100">
+              <div class="stars">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i
+                ><i class="fa fa-star"></i><i class="fa fa-star"></i
+                ><i class="fa fa-star-half-stroke"></i>
+              </div>
+              <div class="quote">"</div>
+              <p>
+                Marina Beach on a Sunday is madness. But with ParkChennai I
+                found a spot near the beach road within 2 minutes of searching.
+                The QR entry is seamless!
+              </p>
+              <div class="d-flex align-items-center gap-2 mt-3">
+                <img
+                  src="https://i.pravatar.cc/80?img=47"
+                  class="testi-avatar"
+                  alt=""
+                />
+                <div>
+                  <div class="testi-name">Priya Sundarajan</div>
+                  <div class="testi-role">Teacher, Mylapore</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-sec">
+      <div class="container position-relative">
+        <div class="section-label mb-3">Get Started Today</div>
+        <h2 class="section-title mb-4">
+          Stop Circling.<br /><span style="color: var(--orange1)"
+            >Start Parking.</span
+          >
+        </h2>
+        <p class="section-sub mx-auto text-center mb-5">
+          Join 50,000+ Chennaiites who've already made parking headaches a thing
+          of the past.
+        </p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+          <a href="./find-parking.html" class="btn btn-primary-custom"
+            ><i class="fa fa-car me-2"></i>Find Parking Now</a
+          >
+          <a href="about.html" class="btn btn-outline-custom">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-brand mb-2">Park<span>Chennai</span></div>
+            <p class="footer-desc">
+              Chennai's smartest parking solution. Real-time slots, easy
+              booking, city-wide coverage.
+            </p>
+            <div class="footer-social mt-3">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <div class="footer-title">Pages</div>
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./find-parking.html">Find Parking</a></li>
+              <li><a href="./booking.html">Book a Slot</a></li>
+              <li><a href="./about.html">About</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-title">Hot Locations</div>
+            <ul class="footer-links">
+              <li><a href="#">T. Nagar Parking</a></li>
+              <li><a href="#">Marina Beach Parking</a></li>
+              <li><a href="#">Velachery Parking</a></li>
+              <li><a href="#">Anna Nagar Parking</a></li>
+              <li><a href="#">Guindy IT Park Parking</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-title">Contact Us</div>
+            <ul class="footer-links">
+              <li>
+                <i
+                  class="fa fa-location-dot me-2"
+                  style="color: var(--orange1)"
+                ></i>
+                Anna Salai, Chennai - 600002
+              </li>
+              <li class="mt-2">
+                <i class="fa fa-phone me-2" style="color: var(--orange1)"></i>
+                +91 xxxxxxxxxx
+              </li>
+              <li class="mt-2">
+                <i
+                  class="fa fa-envelope me-2"
+                  style="color: var(--orange1)"
+                ></i>
+                hello@parkchennai.in
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom d-flex flex-wrap justify-content-between">
+          <span>© 2025 ParkChennai. All rights reserved.</span>
+          <span
+            >Made with
+            <i class="fa fa-heart" style="color: var(--orange1)"></i> in
+            Chennai</span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

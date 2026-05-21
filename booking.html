@@ -1,0 +1,1006 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Slot - ParkChennai</title>
+  <!-- boostarp -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <!-- font awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- font style -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <!-- -------------Link css -->
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+
+  <style>
+    /* PAGE HEADER */
+    .page-home {
+      background: var(--dark2);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 0 2rem;
+    }
+
+    .page-home h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .page-home p {
+      color: var(--muted);
+    }
+
+    /* PROGRESS STEPS */
+    .progress-steps {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 2rem 0;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .step-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      transition: all 0.3s;
+        background: var(--orange1);
+      color: #fff;
+    }
+
+    
+
+    .step-dot.active {
+      background: var(--orange1);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(255, 107, 43, 0.4);
+    }
+
+    .step-dot.pending {
+      background: var(--dark4);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .step-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .step-label.active {
+      color: var(--white);
+    }
+
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+      margin: 0 0.6rem;
+    }
+
+    .step-line.done {
+      background: var(--orange1);
+    }
+
+    /* PARKING CARD */
+    .info-card {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .info-card-img {
+      position: relative;
+    }
+
+    .info-card-img img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+
+
+    .info-card-img .info-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(34, 197, 94, 0.9);
+      color: #fff;
+      border-radius: 50px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .info-card-body {
+      padding: 1.5rem;
+    }
+
+    .rating-stars {
+     
+      font-size: 0.85rem;
+    }
+
+    .additon-infomation {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--border);
+      border-radius: 8px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin: 0.2rem;
+    }
+
+    .additon-infomation i {
+      color: var(--orange1);
+      font-size: 0.7rem;
+    }
+
+     .book-card {
+
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+
+    /* SLOT GRID */
+    .slot-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.6rem;
+    }
+
+    .slot {
+      border-radius: 8px;
+      padding: 0.4rem 0.2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1.5px solid;
+    }
+
+    .slot.free {
+      background: rgba(34, 197, 94, 0.08);
+      border-color: rgba(34, 197, 94, 0.3);
+      color: #22c55e;
+    }
+
+    .slot.free:hover {
+      background: rgba(34, 197, 94, 0.2);
+      transform: scale(1.05);
+    }
+
+    .slot.occupied {
+      background: rgba(239, 68, 68, 0.06);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .slot.selected {
+      background: var(--orange1);
+      border-color: var(--orange1);
+      color: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 0 14px rgba(255, 107, 43, 0.4);
+    }
+
+    .slot-legend {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+
+    .slot-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .slot-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+    }
+
+    /* FORM */
+   
+    .form-label-custom {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    
+    }
+
+    .form-control-custom {
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--white);
+      padding: 0.8rem 1rem;
+      font-size: 0.92rem;
+      width: 100%;
+      outline: none;
+      
+      font-family: "DM Sans", sans-serif;
+    }
+
+    input[type="date"],
+    input[type="time"] {
+      color-scheme: dark;
+    }
+
+    .form-control-custom:focus {
+      border-color: rgba(255, 107, 43, 0.4);
+    }
+
+    .form-control-custom option {
+      background: var(--dark3);
+    }
+
+    .form-control-custom::placeholder {
+      color: var(--muted);
+    }
+
+    .duration-btn {
+      background: var(--border);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      color: var(--muted);
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-weight: 600;
+      font-family: "Syne", sans-serif;
+    }
+
+    .duration-btn:hover {
+      border-color: rgba(255, 107, 43, 0.3);
+      color: var(--white);
+    }
+
+    .duration-btn.active {
+      background: rgba(255, 107, 43, 0.1);
+      border-color: var(--orange1);
+      color: var(--orange1);
+    }
+
+    /* SUMMARY CARD */
+    .summary-card {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.8rem;
+      position: sticky;
+      top: 90px;
+    }
+
+    .summary-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.3rem;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+   
+    .summary-row .label {
+      color: var(--muted);
+    }
+
+    .summary-row .val {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+   
+      padding: 1rem 0 0;
+      font-weight: 800;
+      font-size: 1.1rem;
+      font-family: "Syne", sans-serif;
+      border-top: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+
+    .summary-total .val {
+      color: var(--orange1);
+      font-size: 1.4rem;
+    }
+
+    .btn-confirm {
+      background: var(--orange1);
+      border: none;
+      color: #fff;
+      border-radius: 14px;
+      padding: 1rem;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s;
+      width: 100%;
+      font-family: "Syne", sans-serif;
+      box-shadow: 0 0 30px rgba(255, 107, 43, 0.25);
+      margin-top: 1.2rem;
+    }
+
+    .btn-confirm:hover {
+      background: var(--orange1-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(255, 107, 43, 0.35);
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+     
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.8rem;
+    }
+
+    .trust-badge i {
+      color: var(--orange1);
+    }
+
+    .paymentmethod {
+      background: var(--border);
+      border-radius: 6px;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.7rem;
+      color: var(--white);
+
+    }
+
+    /* SUCCESS MODAL */
+    .modal-content {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .modal-header {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-footer {
+      border-top: 1px solid var(--border);
+    }
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(34, 197, 94, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: #22c55e;
+      margin: 0 auto 1.5rem;
+    }
+
+    .qr-placeholder {
+      width: 140px;
+      height: 140px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.2rem auto;
+    }
+
+    .qr-placeholder i {
+      font-size: 4rem;
+      color: var(--white);
+    }
+
+
+
+    /* Tablet */
+  
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+      .slot-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    /* Mobile */
+ 
+@media only screen and (min-width: 300px) and (max-width: 600px) {
+      .slot-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .info-card-img img {
+        height: 160px;
+      }
+
+
+      .progress-steps {
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        gap: 1.5rem;
+      }
+
+
+
+      .step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .step-line {
+        display: none;
+      }
+
+
+
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="./index.html">Park<span>Chennai</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./find-parking.html">Find Parking</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="./booking.html">Book</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./contact.html">Contact</a>
+          </li>
+          <li class="nav-item ms-2">
+            <a class="nav-link nav-find" href="./find-parking.html"><i class="fa fa-car me-1"></i> Find Parking</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-home">
+    <div class="container">
+      <div class="fade-up">
+        <div style="
+              font-size: 0.75rem;
+              letter-spacing: 2px;
+              text-transform: uppercase;
+              color: var(--orange1);
+              margin-bottom: 0.5rem;
+            ">
+          Booking
+        </div>
+        <h1>
+          Reserve Your <span style="color: var(--orange1)">Parking Slot</span>
+        </h1>
+        <p>
+          Confirm details, select your time, and you're done in under 60
+          seconds.
+        </p>
+      </div>
+      <!-- Progress -->
+      <div class="progress-steps mt-4">
+        <div class="step">
+          <div class="step-dot "><i class="fa fa-check fa-xs"></i></div>
+          <span class="step-label">Search</span>
+        </div>
+        <div class="step-line done"></div>
+        <div class="step">
+          <div class="step-dot active">2</div>
+          <span class="step-label active">Book</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-dot pending">3</div>
+          <span class="step-label">Confirm</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-dot pending">4</div>
+          <span class="step-label">Park</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="row g-5">
+      <!-- LEFT COLUMN -->
+      <div class="col-12 col-md-12 col-lg-8">
+        <!-- PARKING DETAILS -->
+        <div class="info-card mb-4 fade-up">
+          <div class="info-card-img">
+            <img src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800" alt="Parking" />
+           
+            <span class="info-badge">● 24 Slots Available</span>
+          </div>
+          <div class="info-card-body">
+            <div class="row align-items-start">
+              <div class="col-md-8">
+                <h3 class="mb-1">Panagal Park Multilevel Parking</h3>
+                <div style="
+                      color: var(--muted);
+                      font-size: 0.88rem;
+                      margin-bottom: 0.6rem;
+                    ">
+                  <i class="fa fa-location-dot me-1" style="color: var(--orange1)"></i>
+                  Panagal Park, T. Nagar, Chennai - 600017
+                </div>
+                <div class="d-flex  align-items-center gap-2 mb-1">
+                  <div class="rating-stars">
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                      class="fa fa-star"></i><i class="fa fa-star-half-stroke"></i>
+                  </div>
+                  <span style="font-size: 0.85rem; color: var(--white)">4.6</span>
+                  <span style="font-size: 0.82rem; color: var(--muted)">(1.2k reviews)</span>
+                </div>
+                <div class="mt-3">
+                  <span class="additon-infomation"><i class="fa fa-shield-halved"></i> CCTV 24/7</span>
+                  <span class="additon-infomation"><i class="fa fa-charging-station"></i> EV Charging</span>
+                  <span class="additon-infomation"><i class="fa fa-umbrella"></i> Covered</span>
+                  <span class="additon-infomation"><i class="fa fa-wheelchair"></i> Accessible</span>
+                  <span class="additon-infomation"><i class="fa fa-restroom"></i> Restrooms</span>
+                </div>
+              </div>
+              <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <div style="
+                      font-size: 2rem;
+                      font-weight: 800;
+                      color: var(--orange1);
+                      font-family:Syne, sans-serif;
+                    ">
+                  ₹35<span style="
+                        font-size: 1rem;
+                        color: var(--muted);
+                        font-weight: 400;
+                      ">/hr</span>
+                </div>
+                <div style="font-size: 0.78rem; color: var(--muted)">
+                  Min. 1 hour billing
+                </div>
+                <div style="
+                      margin-top: 0.5rem;
+                      font-size: 0.82rem;
+                      color: #22c55e;
+                    ">
+                  <i class="fa fa-circle fa-xs me-1"></i> Open Now  Closes 11
+                  PM
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLOT  -->
+        <div class="book-card mb-4 fade-up d1">
+          <h5 class="mb-1">Select a Parking Slot</h5>
+          <p style="
+                color: var(--muted);
+                font-size: 0.87rem;
+                margin-bottom: 1.5rem;
+              ">
+            Choose your preferred slot from the floor plan below.
+          </p>
+          <div style="
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 0.6rem;
+              ">
+            Ground Floor (G1-G18)
+          </div>
+          <div class="slot-grid mb-3">
+            <div class="slot free">G1</div>
+            <div class="slot free">G2</div>
+            <div class="slot occupied">G3</div>
+            <div class="slot free">G4</div>
+            <div class="slot occupied">G5</div>
+            <div class="slot selected" id="g6">G6</div>
+            <div class="slot occupied">G7</div>
+            <div class="slot free">G8</div>
+            <div class="slot free">G9</div>
+            <div class="slot occupied">G10</div>
+            <div class="slot free">G11</div>
+            <div class="slot free">G12</div>
+            <div class="slot free">G13</div>
+            <div class="slot occupied">G14</div>
+            <div class="slot free">G15</div>
+            <div class="slot free">G16</div>
+            <div class="slot occupied">G17</div>
+            <div class="slot free">G18</div>
+          </div>
+          <div style="
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 0.6rem;
+              ">
+            First Floor (F1-F12)
+          </div>
+          <div class="slot-grid">
+            <div class="slot free">F1</div>
+            <div class="slot free">F2</div>
+            <div class="slot free">F3</div>
+            <div class="slot occupied">F4</div>
+            <div class="slot free">F5</div>
+            <div class="slot free">F6</div>
+            <div class="slot occupied">F7</div>
+            <div class="slot free">F8</div>
+            <div class="slot occupied">F9</div>
+            <div class="slot free">F10</div>
+            <div class="slot occupied">F11</div>
+            <div class="slot free">F12</div>
+          </div>
+          <div class="slot-legend">
+            <div class="slot-legend-item">
+              <div class="slot-legend-dot" style="background: rgba(34, 197, 94, 0.4)"></div>
+              Available
+            </div>
+            <div class="slot-legend-item">
+              <div class="slot-legend-dot" style="background: rgba(239, 68, 68, 0.4)"></div>
+              Occupied
+            </div>
+            <div class="slot-legend-item">
+              <div class="slot-legend-dot" style="background: var(--orange1)"></div>
+              Selected (G6)
+            </div>
+          </div>
+        </div>
+
+        <!-- TIME & VEHICLE FORM -->
+        <div class="book-card mb-4 fade-up d2">
+          <h5 class="mb-4">Booking Details</h5>
+          <div class="row g-4">
+            <div class="col-12 col-sm-6">
+              <label class="form-label-custom">Date</label>
+              <input type="date" class="form-control-custom" />
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label-custom">Start Time</label>
+              <input type="time" class="form-control-custom" value="11:00" />
+            </div>
+            <div class="col-12">
+              <label class="form-label-custom">Duration</label>
+              <div class="d-flex gap-2 flex-wrap">
+                <button class="duration-btn">1 Hr</button>
+                <button class="duration-btn active">2 Hrs</button>
+                <button class="duration-btn">3 Hrs</button>
+                <button class="duration-btn">4 Hrs</button>
+                <button class="duration-btn">6 Hrs</button>
+                <button class="duration-btn">Full Day</button>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label-custom">Vehicle Type</label>
+              <select class="form-control-custom">
+                <option>🚗 Car (Sedan/Hatchback)</option>
+                <option>🚙 SUV</option>
+                <option>🏍 Bike / Scooter</option>
+                <option>⚡ Electric Vehicle</option>
+              </select>
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label-custom">Vehicle Number</label>
+              <input type="text" class="form-control-custom" placeholder="TN 01 AB 1234" />
+            </div>
+            <div class="col-12">
+              <label class="form-label-custom">Contact Number</label>
+              <input type="tel" class="form-control-custom" placeholder="+91 98400 XXXXX" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: SUMMARY -->
+      <div class="col-12 col-md-12 col-lg-4">
+        <div class="summary-card fade-up d1">
+          <div class="summary-title">Booking Summary</div>
+
+          <div style="
+                background: var(--border);
+                border-radius: 12px;
+                padding: 1rem;
+                margin-bottom: 1rem;
+              ">
+            <div style="font-size: 0.82rem; color: var(--muted)">
+              Parking Location
+            </div>
+            <div style="
+                  font-weight: 700;
+                  color: var(--white);
+                  font-size: 0.95rem;
+                  margin-top: 0.2rem;
+                ">
+              Panagal Park Multilevel
+            </div>
+            <div style="
+                  font-size: 0.8rem;
+                  color: var(--muted);
+                  margin-top: 0.2rem;
+                ">
+              <i class="fa fa-location-dot fa-xs" style="color: var(--orange1)"></i>
+              T. Nagar, Chennai
+            </div>
+          </div>
+
+          <div class="summary-row">
+            <span class="label">Selected Slot</span><span class="val" style="color: var(--orange1)">G6 - Ground
+              Floor</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Date</span><span class="val">Today, 29 Mar 2025</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Start Time</span><span class="val">11:00 AM</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">End Time</span><span class="val">1:00 PM</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Duration</span><span class="val">2 Hours</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Parking Rate</span><span class="val">₹35 / hour</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Parking Fee</span><span class="val">₹70.00</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">Platform Fee</span><span class="val">₹5.00</span>
+          </div>
+          <div class="summary-row">
+            <span class="label">GST (18%)</span><span class="val">₹13.50</span>
+          </div>
+          <div class="summary-total">
+            <span>Total</span>
+            <span class="val">₹88.50</span>
+          </div>
+
+          <button class="btn-confirm" data-bs-toggle="modal" data-bs-target="#successModal">
+            <i class="fa fa-lock me-2"></i>Confirm Booking
+          </button>
+
+          <div class="trust-badge">
+            <i class="fa fa-shield-halved"></i>
+            <span>Secure booking. Free cancellation up to 30 mins before.</span>
+          </div>
+          <div class="trust-badge">
+            <i class="fa fa-rotate-left"></i>
+            <span>100% refund if parking spot is unavailable.</span>
+          </div>
+
+          <div style="text-align: center; margin-top: 1.2rem">
+            <div style="font-size: 0.72rem; color: var(--muted)">
+              Accepted payment methods
+            </div>
+            <div style="
+                  display: flex;
+                  justify-content: center;
+                  gap: 0.5rem;
+                  margin-top: 0.5rem;
+                ">
+              <span class="paymentmethod">UPI</span>
+              <span class="paymentmethod">Card</span>
+              <span class="paymentmethod">Net Banking</span>
+              <span class="paymentmethod">Wallet</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal fade" id="successModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-center px-4 pb-2">
+          <div class="success-icon"><i class="fa fa-check"></i></div>
+          <h4 style="font-weight: 800; color: var(--white)">
+            Booking Confirmed!
+          </h4>
+          <p style="color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem">
+            Your slot <strong style="color: var(--orange1)">G6</strong> at
+            <strong style="color: var(--white)">Panagal Park</strong> is
+            reserved from
+            <strong style="color: var(--white)">11 AM to 1 PM</strong>.
+          </p>
+          <div style="
+                background: var(--border);
+                border-radius: 14px;
+                padding: 1.2rem;
+                margin: 1.2rem 0;
+              ">
+            <div style="
+                  font-size: 0.7rem;
+                  letter-spacing: 1.5px;
+                  text-transform: uppercase;
+                  color: var(--muted);
+                  margin-bottom: 0.4rem;
+                ">
+              Booking ID
+            </div>
+            <div style="
+                  font-size: 1.2rem;
+                  font-weight: 800;
+                  color: var(--orange1);
+                  font-family:Syne, sans-serif;
+                  letter-spacing: 2px;
+                ">
+              PCH-20250329-G6
+            </div>
+          </div>
+          <div class="qr-placeholder">
+            <i class="fa fa-qrcode"></i>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--muted)">
+            Show this QR code at the parking gate for entry. A copy has been
+            sent to your phone.
+          </p>
+        </div>
+        <div class="modal-footer justify-content-center gap-3">
+          <button class="btn" style="
+                background: var(--orange1);
+                color: #fff;
+                border-radius: 12px;
+                padding: 0.6rem 1.5rem;
+                font-weight: 700;
+                font-family: Syne, sans-serif;
+                border: none;
+              ">
+            <i class="fa fa-download me-2"></i>Download Pass
+          </button>
+          <button class="btn" style="
+                border: 1px solid var(--border);
+                color: var(--muted);
+                border-radius: 12px;
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+              " data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-brand mb-2">Park<span>Chennai</span></div>
+          <p class="footer-desc">
+            Chennai's smartest parking solution. Real-time slots, easy
+            booking, city-wide coverage.
+          </p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <div class="footer-title">Pages</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="find-parking.html">Find Parking</a></li>
+            <li><a href="booking.html">Book a Slot</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-title">Hot Locations</div>
+          <ul class="footer-links">
+            <li><a href="#">T. Nagar Parking</a></li>
+            <li><a href="#">Marina Beach Parking</a></li>
+            <li><a href="#">Velachery Parking</a></li>
+            <li><a href="#">Anna Nagar Parking</a></li>
+            <li><a href="#">Guindy IT Park Parking</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-title">Contact Us</div>
+          <ul class="footer-links">
+            <li>
+              <i class="fa fa-location-dot me-2" style="color: var(--orange1)"></i>
+              Anna Salai, Chennai - 600002
+            </li>
+            <li class="mt-2">
+              <i class="fa fa-phone me-2" style="color: var(--orange1)"></i>
+              +91 98400 12345
+            </li>
+            <li class="mt-2">
+              <i class="fa fa-envelope me-2" style="color: var(--orange1)"></i>
+              hello@parkchennai.in
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom d-flex flex-wrap justify-content-between">
+        <span>© 2025 ParkChennai. All rights reserved.</span>
+        <span>Made with
+          <i class="fa fa-heart" style="color: var(--orange1)"></i> in
+          Chennai</span>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

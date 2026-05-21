@@ -1,0 +1,810 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book a Slot - ParkChennai</title>
+    <!-- boostarp -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- font awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- font style -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- -------------Link css -->
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+
+    <style>
+      /* home */
+      .about-home {
+        position: relative;
+        padding: 7rem 0 5rem;
+        overflow: hidden;
+      }
+
+      .about-home::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1400")
+          center/cover no-repeat;
+        opacity: 0.06;
+      }
+
+      .about-home::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 120px;
+        background: linear-gradient(to bottom, transparent, var(--dark));
+      }
+
+      .section-label {
+        font-size: 0.75rem;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--orange1);
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+      }
+
+      .section-title {
+        font-size: clamp(1.6rem, 3vw, 2.8rem);
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        color: var(--white);
+      }
+
+      .divider-line {
+        width: 48px;
+        height: 3px;
+        background: var(--orange1);
+        border-radius: 2px;
+        margin-bottom: 1.5rem;
+      }
+
+      /* STATS */
+      .stat-card {
+        background: var(--dark3);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.35s;
+      }
+
+      .stat-card:hover {
+        border-color: rgba(255, 107, 43, 0.3);
+        transform: translateY(-5px);
+      }
+
+      .stat-val {
+        font-size: clamp(1.4rem, 3vw, 2.5rem);
+        font-weight: 800;
+        color: var(--orange1);
+        font-family: "Syne", sans-serif;
+        line-height: 1;
+      }
+
+      .stat-lbl {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 0.4rem;
+      }
+
+      /* STORY */
+      .story-sec {
+        background: var(--dark2);
+      }
+
+      .story-img {
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .story-img img {
+        height: 26rem;
+        max-height: 60vh;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .story-img:hover img {
+        transform: scale(1.04);
+      }
+
+      .story-highlight {
+        background: var(--dark3);
+        border-left: 3px solid var(--orange1);
+        border-radius: 0 12px 12px 0;
+        padding: 1.2rem 1.4rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: var(--white);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      /* MISSION VALUES */
+      .value-card {
+        background: var(--dark3);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 1.8rem;
+        transition: all 0.35s;
+      }
+
+      .value-card:hover {
+        border-color: rgba(255, 107, 43, 0.25);
+        transform: translateY(-5px);
+      }
+
+      .value-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 107, 43, 0.1);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        color: var(--orange1);
+        margin-bottom: 1rem;
+        transition: all 0.3s;
+      }
+
+      .value-card:hover .value-icon {
+        background: var(--orange1);
+        color: #fff;
+      }
+
+      /* TEAM */
+      .team-card {
+        background: var(--dark3);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        text-align: center;
+        transition: all 0.35s;
+      }
+
+      .team-card:hover {
+        border-color: rgba(255, 107, 43, 0.3);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .team-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .team-card:hover .team-img {
+        transform: scale(1.06);
+      }
+
+      .team-body {
+        padding: 1.3rem;
+      }
+
+      .team-name {
+        font-weight: 700;
+        font-size: 1.02rem;
+        color: var(--white);
+        margin-bottom: 0.2rem;
+      }
+
+      .team-role {
+        font-size: 0.82rem;
+        color: var(--orange1);
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+      }
+
+      .team-bio {
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .team-social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+
+        border: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 0.75rem;
+        margin: 0 0.2rem;
+        text-decoration: none;
+        transition: all 0.25s;
+      }
+
+      .team-social a:hover {
+        background: var(--orange1);
+        border-color: var(--orange1);
+        color: #fff;
+      }
+
+      /* TIMELINE */
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--orange1), transparent);
+      }
+
+      .timeline-item {
+        position: relative;
+        padding: 0 0 2.5rem 1.5rem;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -2.2rem;
+        top: 0.35rem;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--orange1);
+        box-shadow: 0 0 12px rgba(255, 107, 43, 0.4);
+      }
+
+      .timeline-year {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--orange1);
+        letter-spacing: 1px;
+        margin-bottom: 0.3rem;
+      }
+
+      .timeline-item h6 {
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 0.3rem;
+      }
+
+      .timeline-item p {
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.65;
+        margin: 0;
+      }
+
+      section {
+        padding: 5rem 0;
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      /* Mobile */
+      @media only screen and (min-width: 300px) and (max-width: 600px) {
+        html {
+          font-size: 14px;
+        }
+      }
+
+      /* Tablet */
+      @media only screen and (min-width: 600px) and (max-width: 900px) {
+        html {
+          font-size: 15px;
+        }
+      }
+
+      /* Laptop */
+      @media only screen and (min-width: 900px) and (max-width: 1200px) {
+        html {
+          font-size: 17px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="./index.html">Park<span>Chennai</span></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./find-parking.html">Find Parking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./booking.html">Book</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="./about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./contact.html">Contact</a>
+            </li>
+            <li class="nav-item ms-2">
+              <a class="nav-link nav-find" href="./find-parking.html"
+                ><i class="fa fa-car me-1"></i> Find Parking</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- home -->
+    <div class="about-home">
+      <div class="container position-relative" style="z-index: 1">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8">
+            <div class="section-label fade-up">Our Story</div>
+            <div class="divider-line mx-auto fade-up"></div>
+            <h1
+              class="section-title fade-up d1"
+              style="font-size: clamp(2.5rem, 5vw, 4rem)"
+            >
+              Born in Chennai.<br /><span style="color: var(--orange1)"
+                >Built for Chennai.</span
+              >
+            </h1>
+            <p
+              class="mt-4 fade-up d2"
+              style="
+                color: var(--muted);
+                font-size: 1.1rem;
+                line-height: 1.8;
+                max-width: 600px;
+                margin: 1.5rem auto 0;
+              "
+            >
+              We know what it feels like to circle Ranganathan Street three
+              times or miss a spot at Express Avenue. ParkChennai exists because
+              we lived that frustration.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <section style="padding-top: 2rem">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-6 col-md-3">
+            <div class="stat-card">
+              <div class="stat-val">200+</div>
+              <div class="stat-lbl">Parking Locations</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card">
+              <div class="stat-val">50K+</div>
+              <div class="stat-lbl">Happy Drivers</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card">
+              <div class="stat-val">4.8★</div>
+              <div class="stat-lbl">Average Rating</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-card">
+              <div class="stat-val">3 yrs</div>
+              <div class="stat-lbl">Serving Chennai</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR STORY -->
+    <section class="story-sec">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="story-img">
+              <img
+                src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=700"
+                alt="Chennai streets"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="section-label">The Origin</div>
+            <div class="divider-line"></div>
+            <h2 class="section-title">
+              From a Frustrated Drive<br />to a City-Wide Solution
+            </h2>
+            <div class="story-highlight">
+              "We spent 40 minutes looking for parking near Saravana Stores
+              during Pongal. That was the day we decided to fix this."
+            </div>
+            <p
+              style="color: var(--muted); line-height: 1.8; font-size: 0.95rem"
+            >
+              ParkChennai was founded in 2022 by a group of engineers and urban
+              mobility enthusiasts right here in Chennai. What started as a
+              weekend project to map parking spots near T. Nagar quickly grew
+              into a full-fledged platform covering every major neighbourhood in
+              the city.
+            </p>
+            <p
+              style="
+                color: var(--muted);
+                line-height: 1.8;
+                font-size: 0.95rem;
+                margin-top: 1rem;
+              "
+            >
+              Today, we work with 200+ parking operators across Chennai — from
+              family-run lots in Mylapore to corporate basements in Guindy — to
+              bring you real-time data, transparent pricing, and seamless
+              booking.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES -->
+    <section>
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="section-label">What Drives Us</div>
+          <div class="divider-line mx-auto"></div>
+          <h2 class="section-title">Our Values</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="value-card h-100">
+              <div class="value-icon"><i class="fa fa-bolt"></i></div>
+              <h5>Speed</h5>
+              <p
+                style="
+                  color: var(--muted);
+                  font-size: 0.88rem;
+                  line-height: 1.7;
+                "
+              >
+                Find and book a spot in under 30 seconds. Every feature we build
+                is tested against this benchmark.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="value-card h-100">
+              <div class="value-icon"><i class="fa fa-eye"></i></div>
+              <h5>Transparency</h5>
+              <p
+                style="
+                  color: var(--muted);
+                  font-size: 0.88rem;
+                  line-height: 1.7;
+                "
+              >
+                No hidden charges, no surprises at the gate. The price you see
+                is exactly what you pay.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="value-card h-100">
+              <div class="value-icon"><i class="fa fa-leaf"></i></div>
+              <h5>Sustainability</h5>
+              <p
+                style="
+                  color: var(--muted);
+                  font-size: 0.88rem;
+                  line-height: 1.7;
+                "
+              >
+                Less circling = less emissions. We're committed to EV charging
+                access and reducing urban congestion.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="value-card h-100">
+              <div class="value-icon"><i class="fa fa-heart"></i></div>
+              <h5>Community</h5>
+              <p
+                style="
+                  color: var(--muted);
+                  font-size: 0.88rem;
+                  line-height: 1.7;
+                "
+              >
+                We're a Chennai company serving Chennai. Every rupee earned goes
+                back into improving the city's parking infrastructure.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section style="background: var(--dark2); padding: 5rem 0">
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="section-label">The People</div>
+          <div class="divider-line mx-auto"></div>
+          <h2 class="section-title">Meet the Team</h2>
+        </div>
+        <div class="row g-4 justify-content-center">
+          <div class="col-sm-6 col-lg-3">
+            <div class="team-card">
+              <img
+                src="https://i.pravatar.cc/300?img=11"
+                class="team-img"
+                alt="CEO"
+              />
+              <div class="team-body">
+                <div class="team-name">Karthik Subramaniam</div>
+                <div class="team-role">CEO & Co-Founder</div>
+                <div class="team-bio">
+                  Urban mobility engineer with 10 years in smart city
+                  infrastructure. Chennai-born and proud.
+                </div>
+                <div class="team-social mt-2">
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="team-card">
+              <img
+                src="https://i.pravatar.cc/300?img=45"
+                class="team-img"
+                alt="CTO"
+              />
+              <div class="team-body">
+                <div class="team-name">Preethi Anand</div>
+                <div class="team-role">CTO & Co-Founder</div>
+                <div class="team-bio">
+                  Full-stack engineer & IoT specialist. Built the real-time
+                  sensor network behind ParkChennai.
+                </div>
+                <div class="team-social mt-2">
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="team-card">
+              <img
+                src="https://i.pravatar.cc/300?img=53"
+                class="team-img"
+                alt="Design"
+              />
+              <div class="team-body">
+                <div class="team-name">Ravi Shankar</div>
+                <div class="team-role">Head of Design</div>
+                <div class="team-bio">
+                  Product designer focused on making complex tasks feel
+                  effortless for everyday Chennai commuters.
+                </div>
+                <div class="team-social mt-2">
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#"><i class="fab fa-dribbble"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="team-card">
+              <img
+                src="https://i.pravatar.cc/300?img=32"
+                class="team-img"
+                alt="Ops"
+              />
+              <div class="team-body">
+                <div class="team-name">Divya Nataraj</div>
+                <div class="team-role">Head of Operations</div>
+                <div class="team-bio">
+                  Manages partnerships with 200+ parking operators. If a
+                  location is on our platform, it's because of Divya.
+                </div>
+                <div class="team-social mt-2">
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 mb-5 mb-lg-0">
+            <div class="section-label">Journey</div>
+            <div class="divider-line"></div>
+            <h2 class="section-title">Our Milestones</h2>
+            <p
+              style="
+                color: var(--muted);
+                margin-top: 1rem;
+                line-height: 1.8;
+                font-size: 0.95rem;
+              "
+            >
+              From a single parking lot in T. Nagar to becoming Chennai's most
+              trusted parking platform — here's how we got here.
+            </p>
+          </div>
+          <div class="col-lg-6 offset-lg-1">
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-year">2022 — Q1</div>
+                <h6>Idea is Born</h6>
+                <p>
+                  Frustrated after a 45-minute parking hunt near Saravana
+                  Stores, our founders begin building the prototype.
+                </p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2022 — Q3</div>
+                <h6>Launched in T. Nagar</h6>
+                <p>
+                  ParkChennai goes live with 12 parking spots in T. Nagar. 400
+                  users sign up in the first week.
+                </p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2023 — Q1</div>
+                <h6>City-Wide Expansion</h6>
+                <p>
+                  Coverage expands to 50 locations across 10 major Chennai zones
+                  including Adyar, Anna Nagar and Velachery.
+                </p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2023 — Q4</div>
+                <h6>EV Charging Network</h6>
+                <p>
+                  Launched EV-charging enabled parking slots at 25 locations
+                  across the city — a first in Chennai.
+                </p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2024 — Q2</div>
+                <h6>50,000 Users Milestone</h6>
+                <p>
+                  Crossed 50,000 registered users and 1 lakh bookings. Rated 4.8
+                  stars on the Play Store.
+                </p>
+              </div>
+              <div class="timeline-item" style="padding-bottom: 0">
+                <div class="timeline-year">2025 — Present</div>
+                <h6>200+ Locations & Growing</h6>
+                <p>
+                  Now serving all major areas of Chennai with plans to expand to
+                  Coimbatore and Madurai by 2026.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-brand mb-2">Park<span>Chennai</span></div>
+            <p class="footer-desc">
+              Chennai's smartest parking solution. Real-time slots, easy
+              booking, city-wide coverage.
+            </p>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <div class="footer-title">Pages</div>
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./find-parking.html">Find Parking</a></li>
+              <li><a href="./booking.html">Book a Slot</a></li>
+              <li><a href="./about.html">About</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-title">Hot Locations</div>
+            <ul class="footer-links">
+              <li><a href="#">T. Nagar Parking</a></li>
+              <li><a href="#">Marina Beach Parking</a></li>
+              <li><a href="#">Velachery Parking</a></li>
+              <li><a href="#">Anna Nagar Parking</a></li>
+              <li><a href="#">Guindy IT Park Parking</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-title">Contact Us</div>
+            <ul class="footer-links">
+              <li>
+                <i
+                  class="fa fa-location-dot me-2"
+                  style="color: var(--orange1)"
+                ></i>
+                Anna Salai, Chennai – 600002
+              </li>
+              <li class="mt-2">
+                <i class="fa fa-phone me-2" style="color: var(--orange1)"></i>
+                +91 98400 12345
+              </li>
+              <li class="mt-2">
+                <i
+                  class="fa fa-envelope me-2"
+                  style="color: var(--orange1)"
+                ></i>
+                hello@parkchennai.in
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom d-flex flex-wrap justify-content-between">
+          <span>© 2025 ParkChennai. All rights reserved.</span>
+          <span
+            >Made with
+            <i class="fa fa-heart" style="color: var(--orange1)"></i> in
+            Chennai</span
+          >
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
